@@ -1,0 +1,39 @@
+{
+  "name": "afpb-players-sync",
+  "version": "1.0.0",
+  "description": "Sync player data from AFPB website to local database",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "sync": "node src/sync-players.js",
+    "sync:api": "node src/sync-players.js --mode api-only",
+    "sync:scrape": "node src/sync-players.js --mode scrape-only",
+    "sync:full": "node src/sync-players.js --mode full",
+    "sync:match": "node src/sync-players.js --mode match",
+    "sync:update-website": "node src/sync-players.js --mode update-website",
+    "schedule": "node src/scheduler.js",
+    "schedule:test": "node src/scheduler.js --test",
+    "schedule:run-now": "node src/scheduler.js --run-now",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "example:basic": "node examples/basic-usage.js",
+    "example:scraping": "node examples/web-scraping-example.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.3.1",
+    "fs-extra": "^11.1.1",
+    "node-cron": "^4.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "afpb",
+    "players",
+    "sync",
+    "scraping"
+  ],
+  "author": "",
+  "license": "MIT"
+}
