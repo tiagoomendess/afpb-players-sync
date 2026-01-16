@@ -46,7 +46,13 @@ const hardCodedMappings = {
   'Palme Futebol Clube': 'Palme',
   'União Cultural e Recreativa de Aborim': 'Aborim',
   'Associação desportiva R.e Cultural Futebol Clube Lirio do Neiva': 'FC Lirio do Neiva',
-  'MARCA: Movimento Associativo R.Cultura e Arte Vila Cova': 'MARCA'
+  'MARCA: Movimento Associativo R.Cultura e Arte Vila Cova': 'MARCA',
+  'Associação Cultural Desportiva São Miguel de Laundos': 'Laúndos',
+  'Vila Fria Mil Novecentos Oitenta': 'Vila Fria 1980',
+  'Associação Desportiva Cultural de Balasar': 'ADC Balasar',
+  'Grupo Desportivo de Apulia': 'GD Apúlia',
+  'Associação Juvenil da Estela': 'Estela',
+  'Clube Caçadores Os Torreenses': 'Os Torrenses'
 }
 
 class ClubMappingService {
