@@ -18,7 +18,7 @@ const originalArgv = process.argv.slice();
  * - 1,5: Monday (1) and Friday (5)
  */
 
-const CRON_SCHEDULE = '0 22 * * 1,5';
+const CRON_SCHEDULE = '0 5 * * 1,5,6';
 
 function getNextRunTimes() {
   const now = new Date();
