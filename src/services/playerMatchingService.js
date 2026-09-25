@@ -356,6 +356,7 @@ class PlayerMatchingService {
             year_of_birth: afpbPlayer.year_of_birth,
             unique_id: afpbPlayer.unique_id,
             scraped_at: afpbPlayer.scraped_at,
+            team: afpbPlayer.team || null,
             previous_club: websiteClub,
             club_name_afpb: afpbPlayer.club_name_afpb
           });
@@ -381,7 +382,8 @@ class PlayerMatchingService {
           year_of_birth: afpbPlayer.year_of_birth,
           unique_id: afpbPlayer.unique_id,
           scraped_at: afpbPlayer.scraped_at,
-          club_name_afpb: afpbPlayer.club_name_afpb
+          club_name_afpb: afpbPlayer.club_name_afpb,
+          team: afpbPlayer.team
         });
       }
     }

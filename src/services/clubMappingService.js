@@ -7,7 +7,6 @@ const hardCodedMappings = {
   'Associação Baluganense de Cultura e Desporto': 'Baluganense',
   'Lijó Futebol Clube': 'Lijó',
   'Associação Desportiva de Chorente': 'Chorente',
-  'Associação Baluganense de Cultura e Desporto': 'Baluganense',
   'Associação Cultural Desportiva Carapeços': 'Carapeços',
   'Associação Cultural Desportiva e Recreativa de Cambeses': 'Cambeses',
   'Associação Cultural Desportiva Pereira': 'Pereira',
@@ -45,14 +44,18 @@ const hardCodedMappings = {
   'Núcleo Desportivo Sta. Eugénia': 'ND Sta. Eugénia',
   'Palme Futebol Clube': 'Palme',
   'União Cultural e Recreativa de Aborim': 'Aborim',
-  'Associação desportiva R.e Cultural Futebol Clube Lirio do Neiva': 'FC Lirio do Neiva',
+  'Associação desportiva R.e Cultural Futebol Clube Lirio do Neiva': 'FC Lírio do Neiva',
   'MARCA: Movimento Associativo R.Cultura e Arte Vila Cova': 'MARCA',
   'Associação Cultural Desportiva São Miguel de Laundos': 'Laúndos',
   'Vila Fria Mil Novecentos Oitenta': 'Vila Fria 1980',
   'Associação Desportiva Cultural de Balasar': 'ADC Balasar',
   'Grupo Desportivo de Apulia': 'GD Apúlia',
   'Associação Juvenil da Estela': 'Estela',
-  'Clube Caçadores Os Torreenses': 'Os Torrenses'
+  'Clube Caçadores Os Torreenses': 'Os Torreenses',
+  'Futebol Clube de Areias São Vicente': 'Areias São Vicente',
+  'União Futebol Clube': 'União FC',
+  'A União desportiva de São Mamede': 'UD São Mamede',
+  'Associação Desportiva Águias da Graça Futebol Clube': 'Águias da Graça'
 }
 
 class ClubMappingService {

@@ -480,6 +480,7 @@ class PlayerSyncService {
       nickname: row.nickname,
       picture_url: row.picture_url,
       club_name: row.club_name,
+      team: row.team || null,
     }
 
     if (row.action === 'update') {

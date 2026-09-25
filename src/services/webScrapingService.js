@@ -242,11 +242,22 @@ class WebScrapingService {
       const playerAgeSelector = config.scraping.selectors.players.ageSelector;
       const playerTransferedSelector = config.scraping.selectors.players.transferedSelector;
 
+      let currentTeam = null;
+
       $(playersListSelector).each((index, element) => {
         const $player = $(element);
 
+        // Squad sections are header rows such as "Seniores Masculino" or "Séniores Feminino".
+        // Keep the exact AFPB label and apply it to the players that follow.
+        const sectionLabel = $player.find('td.table__td--player b').first().text().replace(/\s+/g, ' ').trim();
+        const rowName = $player.find(playerNameSelector).text().trim();
+        if (sectionLabel && !rowName) {
+          currentTeam = sectionLabel;
+          return;
+        }
+
         // Extract player data
-        let name = $player.find(playerNameSelector).text().trim();
+        let name = rowName;
         const pictureUrl = $player.find(playerPictureSelector).attr('src');
         const ageText = $player.find(playerAgeSelector).text().trim();
         const transfered = $player.find(playerTransferedSelector).text().trim();
@@ -306,6 +317,7 @@ class WebScrapingService {
             age: age,
             year_of_birth: yearOfBirth,
             unique_id: uniqueId,
+            team: currentTeam,
           });
         }
       });
