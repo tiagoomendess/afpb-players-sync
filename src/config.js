@@ -57,7 +57,7 @@ const config = {
   
   // Player matching configuration (fuzzy matching parameters)
   playerMatching: {
-    removePlayers: true,
+    removePlayers: false,
 
     // Overall minimum score to consider a match (0-1)
     minMatchScore: 0.70,
