@@ -371,7 +371,7 @@ MATCHING OPTIONS (for --mode match):
 
 FUZZY MATCHING TUNING:
   --min-match-score <0-1>       Minimum overall score to consider match (default: ${config.playerMatching.minMatchScore})
-  --name-threshold <0-1>        Name fuzzy matching threshold (default: ${config.playerMatching.nameThreshold})
+  --name-threshold <0-1>        Minimum name similarity. The real score is kept, or returned as 0 when below this (default: ${config.playerMatching.nameThreshold})
   --nickname-threshold <0-1>    Nickname fuzzy matching threshold (default: ${config.playerMatching.nicknameThreshold})
   --name-weight <0-1>           Name importance weight (default: ${config.playerMatching.weights.name})
   --nickname-weight <0-1>       Nickname importance weight (default: ${config.playerMatching.weights.nickname})  

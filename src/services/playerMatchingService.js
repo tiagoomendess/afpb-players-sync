@@ -17,7 +17,8 @@ class PlayerMatchingService {
       // Overall minimum score to consider a match (0-1)
       minMatchScore: options.minMatchScore !== undefined ? options.minMatchScore : config.playerMatching.minMatchScore,
       
-      // Fuzzy string matching thresholds (0-1) - DEPRECATED: kept for compatibility
+      // Fuzzy string matching thresholds (0-1). The real similarity is returned
+      // when it meets the threshold; anything below is treated as 0.
       nameThreshold: options.nameThreshold !== undefined ? options.nameThreshold : config.playerMatching.nameThreshold,
       nicknameThreshold: options.nicknameThreshold !== undefined ? options.nicknameThreshold : config.playerMatching.nicknameThreshold,
       
@@ -40,8 +41,8 @@ class PlayerMatchingService {
     if (this.config.debug) {
       console.log('🔧 PlayerMatchingService Configuration:');
       console.log('   minMatchScore:', this.config.minMatchScore);
-      console.log('   nameThreshold:', this.config.nameThreshold, '(deprecated)');
-      console.log('   nicknameThreshold:', this.config.nicknameThreshold, '(deprecated)');
+      console.log('   nameThreshold:', this.config.nameThreshold);
+      console.log('   nicknameThreshold:', this.config.nicknameThreshold);
       console.log('   weights:', this.config.weights);
       console.log('   maxYearDifference:', this.config.maxYearDifference);
     }
@@ -75,8 +76,8 @@ class PlayerMatchingService {
    * Fuzzy string matching with threshold
    * @param {string} str1 - First string to compare
    * @param {string} str2 - Second string to compare
-   * @param {number} threshold - Match threshold (0-1, where 1 is exact match) - NOW UNUSED, kept for compatibility
-   * @returns {number} - Match score (0-1)
+   * @param {number} threshold - Minimum similarity (0-1). Scores below this are returned as 0
+   * @returns {number} - Actual similarity (0-1), or 0 when it is below the threshold
    */
   fuzzyMatch(str1, str2, threshold = 0.8) {
     if (!str1 || !str2) return 0;
@@ -93,9 +94,9 @@ class PlayerMatchingService {
     
     if (maxLength === 0) return 1;
     
-    const similarity = 1 - (distance / maxLength);
-    // Return actual similarity score instead of threshold-based binary result
-    return Math.max(0, similarity);
+    const similarity = Math.max(0, 1 - (distance / maxLength));
+    if (similarity < threshold) return 0;
+    return similarity;
   }
 
   /**
@@ -133,7 +134,7 @@ class PlayerMatchingService {
    * Enhanced name matching that considers individual name components
    * @param {string} name1 - First name
    * @param {string} name2 - Second name  
-   * @param {number} threshold - Similarity threshold - NOW UNUSED, kept for compatibility
+   * @param {number} threshold - Minimum fuzzy similarity. Below this, the name score is 0
    * @returns {number} - Similarity score (0-1)
    */
   enhancedNameMatch(websitename, afpbName, threshold = 0.8) {
@@ -148,8 +149,8 @@ class PlayerMatchingService {
 
     if (websitename === afpbName) return 1;
     
-    // Basic fuzzy match first
-    const fuzzyScore = this.fuzzyMatch(websitename, afpbName, 0.0);
+    // Basic fuzzy match first. Scores below nameThreshold come back as 0.
+    const fuzzyScore = this.fuzzyMatch(websitename, afpbName, threshold);
     if (fuzzyScore < threshold) return 0;
 
     const websiteNameArray = websitename.split(' ');
@@ -242,7 +243,7 @@ class PlayerMatchingService {
     const websiteName = this.normalize(websitePlayer.name);
     const afpbName = this.normalize(afpbPlayer.name);
 
-    // Name matching - get actual similarity score (not thresholded)
+    // Name matching returns the real similarity, or 0 when it is below nameThreshold
     scores.name = this.enhancedNameMatch(websiteName, afpbName, this.config.nameThreshold);
     
     // Nickname matching (optional but helpful)

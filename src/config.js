@@ -60,11 +60,12 @@ const config = {
     removePlayers: false,
 
     // Overall minimum score to consider a match (0-1)
-    minMatchScore: 0.70,
+    minMatchScore: 0.73,
     
-    // Fuzzy string matching thresholds (0-1) - DEPRECATED: kept for compatibility but no longer used for binary cutoffs
-    // All similarity scores now contribute proportionally to the final weighted score
-    nameThreshold: 0.55,
+    // Minimum name similarity (0-1). The matcher returns the real similarity
+    // when it is at least this value, and 0 when it is below.
+    nameThreshold: 0.66,
+    // Same rule for nicknames: real similarity at or above this value, otherwise 0
     nicknameThreshold: 0.95,
     
     // Score weights (should sum to 1.0)
@@ -77,7 +78,7 @@ const config = {
     
     // Year of birth matching (exact match only)
     maxYearDifference: 2,
-    yearDiffPenalty: 0.3333,
+    yearDiffPenalty: 0.33,
     
     // Debug mode
     debug: false
