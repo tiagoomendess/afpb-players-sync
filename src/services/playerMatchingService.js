@@ -337,7 +337,7 @@ class PlayerMatchingService {
         matchedWebsitePlayers.add(match.websitePlayer.id);
         
         // Check if club names are different
-        const websiteClub = match.player.club_name || '';
+        const websiteClub = match.websitePlayer.current_club_name || '';
         const afpbClub = afpbPlayer.club_name || '';
 
         const shouldUpdate = websiteClub.toLowerCase().trim() !== afpbClub.toLowerCase().trim() ||
