@@ -60,7 +60,7 @@ const config = {
     removePlayers: true,
 
     // Overall minimum score to consider a match (0-1)
-    minMatchScore: 0.73,
+    minMatchScore: 0.75,
     
     // Minimum name similarity (0-1). The matcher returns the real similarity
     // when it is at least this value, and 0 when it is below.
@@ -77,7 +77,7 @@ const config = {
     },
     
     // Year of birth matching (exact match only)
-    maxYearDifference: 2,
+    maxYearDifference: 3,
     yearDiffPenalty: 0.33,
     
     // Debug mode
