@@ -66,6 +66,10 @@ The system uses these defaults if no environment variables are set:
 
 ⚠️ **Important:** The API token must be provided via the `.env` file for security reasons.
 
+**Production:** the sync runs on the same server as Domingo às Dez, so set
+`API_BASE_URL=http://127.0.0.1:3003/api` to call the app directly. Requests to
+`https://domingoasdez.com/api` go through Cloudflare, whose Bot Fight Mode blocks the server.
+
 ## Usage
 
 ### Quick Start
